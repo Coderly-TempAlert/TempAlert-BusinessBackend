@@ -58,31 +58,31 @@ namespace API.Controllers
         {
             var product = _mapper.Map<Product>(productoDto);
 
-            if (productoDto == null)
-            {
-                return BadRequest(new ApiResponse(400));
-            }
-
             _unitOfWork.Products.Add(product);
             await _unitOfWork.SaveAsync();
 
             return CreatedAtAction(nameof(Post), product);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<Product>> Put(Guid id, [FromBody]AddUpdateProductDto productDto)
+        public async Task<ActionResult<Product>> Put(Guid id, [FromBody] AddUpdateProductDto productDto)
         {
-            if(productDto == null)
-                return NotFound();
+            var product = await _unitOfWork.Products.GetByIdAsync(id);
 
-            var product = _mapper.Map<Product>(productDto);
+            if (product == null)
+                return NotFound(new ApiResponse(404));
 
-            _unitOfWork.Products.Update(product);
-            _unitOfWork.SaveAsync();
+            var updateProduct = _mapper.Map<Product>(productDto);
 
-            return product;
+            updateProduct.Id = id;
+
+            _unitOfWork.Products.Detach(product);
+            _unitOfWork.Products.Update(updateProduct);
+            await _unitOfWork.SaveAsync();
+
+            return updateProduct;
         }
 
         [HttpDelete("{id}")]
@@ -93,12 +93,15 @@ namespace API.Controllers
             var product = await _unitOfWork.Products.GetByIdAsync(id);
 
             if (product == null)
-                return NotFound();
+                return NotFound(new ApiResponse(404));
 
             _unitOfWork.Products.Remove(product);
-            _unitOfWork.SaveAsync();
+            await _unitOfWork.SaveAsync();
 
-            return NoContent();
+            return Ok(new
+            {
+                Id = id,
+            });
         }
     }
 }

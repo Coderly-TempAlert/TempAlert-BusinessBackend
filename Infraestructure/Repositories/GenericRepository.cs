@@ -25,6 +25,11 @@ public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
         _context.Set<T>().AddRange(entities);
     }
 
+    public void Detach(T entity)
+    {
+        _context.Entry(entity).State = EntityState.Detached;
+    }
+
     public virtual IEnumerable<T> Find(Expression<Func<T, bool>> expression)
     {
         return _context.Set<T>().Where(expression);
