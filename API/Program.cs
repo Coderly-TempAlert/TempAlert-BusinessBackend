@@ -1,4 +1,5 @@
 using API.Extensions;
+using API.Helpers.Errors;
 using AspNetCoreRateLimit;
 using Infraestructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,9 @@ builder.Services.ConfigureApiVersioning();
 
 builder.Services.AddControllers();
 
+//Manejo de errores del model state(Anotaciones como Required, Email, etc)
+builder.Services.AddValidationErrors();
+
 builder.Services.AddDbContext<BusinessContext>(options =>
 {
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -28,6 +32,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+//Middleware para el manejo de excepciones globales
+app.UseMiddleware<ExceptionMiddleware>();
+
+//Manejo de errror de metodo no encontrado
+app.UseStatusCodePagesWithReExecute("/errors/{0}");
+
 //Configuracion para la limitacion de peticiones por un rango de tiempo
 app.UseIpRateLimiting();
 

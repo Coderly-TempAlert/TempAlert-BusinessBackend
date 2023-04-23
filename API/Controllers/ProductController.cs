@@ -1,5 +1,6 @@
 ﻿using API.Dtos;
 using API.Helpers;
+using API.Helpers.Errors;
 using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
@@ -43,6 +44,9 @@ namespace API.Controllers
         {
             var product = await _unitOfWork.Products.GetByIdAsync(id);
 
+            if (product == null)
+                return NotFound(new ApiResponse(404));
+
             return Ok(product);
         }
 
@@ -56,7 +60,7 @@ namespace API.Controllers
 
             if (productoDto == null)
             {
-                return BadRequest();
+                return BadRequest(new ApiResponse(400));
             }
 
             _unitOfWork.Products.Add(product);
