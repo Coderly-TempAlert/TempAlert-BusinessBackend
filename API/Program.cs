@@ -37,35 +37,36 @@ var app = builder.Build();
 app.UseMiddleware<ExceptionMiddleware>();
 
 //Manejo de errror de metodo no encontrado
-//app.UseStatusCodePagesWithReExecute("/errors/{0}");
+app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
 //Configuracion para la limitacion de peticiones por un rango de tiempo
 app.UseIpRateLimiting();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    //Habilitar migraciones en espera o faltantes, al ejecutar el programa
+    using (var scope = app.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+        try
+        {
+            var context = services.GetRequiredService<BusinessContext>();
+            await context.Database.MigrateAsync();
+        }
+        catch (Exception ex)
+        {
+            var _logger = loggerFactory.CreateLogger<Program>();
+            _logger.LogError(ex, "Error ocurred from migration progress");
+        }
+    }
+
 }
 
-//Habilitar migraciones en espera o faltantes, al ejecutar el programa
-//using (var scope = app.Services.CreateScope())
-//{
-//    var services = scope.ServiceProvider;
-//    var loggerFactory = services.GetRequiredService<ILoggerFactory>();
-//    try
-//    {
-//        var context = services.GetRequiredService<BusinessContext>();
-//        await context.Database.MigrateAsync();
-//    }
-//    catch (Exception ex)
-//    {
-//        var _logger = loggerFactory.CreateLogger<Program>();
-//        _logger.LogError(ex, "Error ocurred from migration progress");
-//    }
-//}
+app.UseSwagger();
+app.UseSwaggerUI();
 
-//app.UseCors("CorsPolicy");
+app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
 
