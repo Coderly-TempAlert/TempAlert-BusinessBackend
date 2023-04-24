@@ -66,7 +66,7 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-app.UseCors("CorsPolicy");
+//app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
 
