@@ -11,15 +11,6 @@ public class ProductRepository : GenericRepository<Product>, IProductRepository
     {
     }
 
-    public async Task<IEnumerable<Product>> GetProductsWithMoreAmount()
-    {
-        return await _context.Products.OrderByDescending(p => p.Amount)
-            .Take(10)
-            .ToListAsync();
-    }
-
-
-
     public override async Task<(int totallyRegister, IEnumerable<Product> registers)> GetAllWithPaginationAsync(int pageIndex, int pageSize, string search)
     {
         var consultation = _context.Products as IQueryable<Product>;

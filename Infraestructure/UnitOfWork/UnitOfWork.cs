@@ -1,4 +1,5 @@
-﻿using Core.Interfaces;
+﻿using Core.Entities;
+using Core.Interfaces;
 using Infraestructure.Data;
 using Infraestructure.Repositories;
 
@@ -9,6 +10,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     private readonly BusinessContext _context;
     private IProductRepository _products;
     private IStoreRepository _stores;
+    private IStoreProductRepository _storeproduct;
 
     public UnitOfWork(BusinessContext context)
     {
@@ -36,6 +38,18 @@ public class UnitOfWork : IUnitOfWork, IDisposable
                 _stores = new StoreRepository(_context);
             }
             return _stores;
+        }
+    }
+
+    public IStoreProductRepository StoreProducts
+    {
+        get
+        {
+            if (_storeproduct == null)
+            {
+                _storeproduct = new StoreProductRepository(_context);
+            }
+            return _storeproduct;
         }
     }
 

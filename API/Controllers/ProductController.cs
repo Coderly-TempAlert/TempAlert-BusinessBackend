@@ -50,6 +50,17 @@ namespace API.Controllers
             return Ok(product);
         }
 
+        [HttpGet("Store/{id}")]
+        public async Task<ActionResult<Pager<StoreProducts>>> GetByStore(Guid id, [FromQuery] GetProductsByStoreIdDto getProductsByStoreIdDto)
+        {
+            var result = await _unitOfWork.StoreProducts.GetProductWithPaginationAsync(getProductsByStoreIdDto.PageIndex, getProductsByStoreIdDto.PageSize, id);
+
+            var products = _mapper.Map<List<StoreProducts>>(result.registers);
+
+            return new Pager<StoreProducts>(products, result.totallyRegister, getProductsByStoreIdDto.PageIndex, getProductsByStoreIdDto.PageSize, id.ToString());
+
+        }
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

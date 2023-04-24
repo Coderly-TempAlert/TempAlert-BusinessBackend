@@ -14,5 +14,8 @@ public class MappingProfiles : Profile
         CreateMap<Store, AddUpdateStoreDto>()
             .ReverseMap();
 
+        CreateMap<StoreProducts, StoreProducts>()
+           .ForMember(dest => dest.Store, opt => opt.MapFrom(src => src.Store))
+           .ForMember(dest => dest.Product, opt => opt.MapFrom(src => src.Product));
     }
 }

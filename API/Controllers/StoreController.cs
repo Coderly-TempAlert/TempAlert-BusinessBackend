@@ -46,6 +46,7 @@ namespace API.Controllers
             return Ok(store);
         }
 
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -66,6 +67,7 @@ namespace API.Controllers
 
             return CreatedAtAction(nameof(Post), store);
         }
+
 
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]

@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace Infraestructure.Repositories;
 
-public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+public class GenericRepository<T> : IGenericRepository<T> where T : class
 {
     protected readonly BusinessContext _context;
 
