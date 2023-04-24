@@ -24,7 +24,7 @@ builder.Services.AddValidationErrors();
 
 builder.Services.AddDbContext<BusinessContext>(options =>
 {
-    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    var connectionString = Environment.GetEnvironmentVariable("TEMPALERT_BUSINESS_DATABASE_CONNECTION");
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
 
