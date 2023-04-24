@@ -16,5 +16,8 @@ public class AddUpdateProductDto
     public int Amount { get; set; }
 
     [Required]
+    public Guid StoreId { get; set; }
+
+    [Required]
     public decimal Temperature { get; set; }
 }

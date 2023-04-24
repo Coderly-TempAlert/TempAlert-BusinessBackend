@@ -58,6 +58,13 @@ namespace API.Controllers
         {
             var product = _mapper.Map<Product>(productoDto);
 
+            var store = await _unitOfWork.Stores.GetByIdAsync(productoDto.StoreId);
+
+            if(store == null)
+                return NotFound(new ApiResponse(404, $"Not found store with id {productoDto.StoreId}"));
+
+            product.Stores.Add(store);
+
             _unitOfWork.Products.Add(product);
             await _unitOfWork.SaveAsync();
 
