@@ -37,7 +37,7 @@ var app = builder.Build();
 app.UseMiddleware<ExceptionMiddleware>();
 
 //Manejo de errror de metodo no encontrado
-app.UseStatusCodePagesWithReExecute("/errors/{0}");
+//app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
 //Configuracion para la limitacion de peticiones por un rango de tiempo
 app.UseIpRateLimiting();

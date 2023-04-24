@@ -12,8 +12,8 @@ namespace API.Controllers
      * Si se quiere versionar algun metodo, se tiene que colocar
      * [MapToApiVersion("1.1")] en la parte superior de cada metodo
     **/
-    [ApiVersion("1.0")]
-    [ApiVersion("1.1")]
+    //[ApiVersion("1.0")]
+    //[ApiVersion("1.1")]
     public class ProductController : BaseApiController
     {
         private readonly IUnitOfWork _unitOfWork;
