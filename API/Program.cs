@@ -49,22 +49,21 @@ if (app.Environment.IsDevelopment())
 }
 
 //Habilitar migraciones en espera o faltantes, al ejecutar el programa
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    var loggerFactory = services.GetRequiredService<ILoggerFactory>();
-    try
-    {
-        var context = services.GetRequiredService<BusinessContext>();
-        await context.Database.MigrateAsync();
-        //await SecurityContextSeed.SeedRolsAsync(context, loggerFactory);
-    }
-    catch (Exception ex)
-    {
-        var _logger = loggerFactory.CreateLogger<Program>();
-        _logger.LogError(ex, "Error ocurred from migration progress");
-    }
-}
+//using (var scope = app.Services.CreateScope())
+//{
+//    var services = scope.ServiceProvider;
+//    var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+//    try
+//    {
+//        var context = services.GetRequiredService<BusinessContext>();
+//        await context.Database.MigrateAsync();
+//    }
+//    catch (Exception ex)
+//    {
+//        var _logger = loggerFactory.CreateLogger<Program>();
+//        _logger.LogError(ex, "Error ocurred from migration progress");
+//    }
+//}
 
 //app.UseCors("CorsPolicy");
 
