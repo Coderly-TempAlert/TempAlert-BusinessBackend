@@ -56,6 +56,12 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Product>> Post(AddUpdateProductDto productoDto)
         {
+            var productExistWithName = _unitOfWork.Products.Find(u => u.Name.ToLower() == productoDto.Name.ToLower()).FirstOrDefault();
+
+            if (productExistWithName != null)
+                return BadRequest(new ApiResponse(400, $"Product with name {productoDto.Name} already exists"));
+
+
             var product = _mapper.Map<Product>(productoDto);
 
             var store = await _unitOfWork.Stores.GetByIdAsync(productoDto.StoreId);
@@ -80,6 +86,12 @@ namespace API.Controllers
 
             if (product == null)
                 return NotFound(new ApiResponse(404));
+
+            var productExistWithName = _unitOfWork.Products.Find(u => u.Name.ToLower() == productDto.Name.ToLower()).FirstOrDefault();
+
+            if (productExistWithName != null && productExistWithName.Id != id)
+                return BadRequest(new ApiResponse(400, $"Product with name {productDto.Name} already exists"));
+
 
             var updateProduct = _mapper.Map<Product>(productDto);
 

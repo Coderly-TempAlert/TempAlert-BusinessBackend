@@ -52,6 +52,11 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Store>> Post(AddUpdateStoreDto storeDto)
         {
+            var storeExistWithName = _unitOfWork.Stores.Find(u => u.Name.ToLower() == storeDto.Name.ToLower()).FirstOrDefault();
+
+            if (storeExistWithName != null)
+                return BadRequest(new ApiResponse(400, $"Store with name {storeDto.Name} already exists"));
+
             var store = _mapper.Map<Store>(storeDto);
 
             store.CreatedDate = DateTime.Now;
@@ -71,6 +76,11 @@ namespace API.Controllers
 
             if (store == null)
                 return NotFound(new ApiResponse(404));
+
+            var storesExistWithName = _unitOfWork.Stores.Find(u => u.Name.ToLower() == storeDto.Name.ToLower()).FirstOrDefault();
+
+            if (storesExistWithName != null && storesExistWithName.Id != id)
+                return BadRequest(new ApiResponse(400, $"Store with name {storeDto.Name} already exists"));
 
             var updateStore = _mapper.Map<Store>(storeDto);
 
