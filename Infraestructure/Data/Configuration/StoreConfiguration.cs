@@ -10,13 +10,13 @@ public class StoreConfiguration : IEntityTypeConfiguration<Store>
     {
         builder.ToTable("stores");
 
-        builder.Property(p=>p.Name)
+        builder.Property(p => p.Name)
             .IsRequired();
 
-        builder.Property(p=>p.Description)
+        builder.Property(p => p.Description)
             .IsRequired();
 
-        builder.Property(p=>p.Address)
+        builder.Property(p => p.Address)
             .IsRequired();
 
         builder.Property(p => p.CreatedDate)
@@ -24,6 +24,20 @@ public class StoreConfiguration : IEntityTypeConfiguration<Store>
 
         builder.HasMany(p => p.Products)
             .WithMany(p => p.Stores)
-            .UsingEntity(j => j.ToTable("Inventory"));
+            .UsingEntity<StoreProducts>(
+
+                j => j.HasOne(pt => pt.Product)
+                .WithMany(t => t.StoreProducts)
+                .HasForeignKey(pt => pt.ProductId),
+
+                j => j.HasOne(pt => pt.Store)
+                .WithMany(t => t.StoreProducts)
+                .HasForeignKey(pt => pt.StoreId),
+
+                j =>
+                {
+                    j.HasKey(t => new { t.ProductId, t.StoreId });
+                }
+            );
     }
 }

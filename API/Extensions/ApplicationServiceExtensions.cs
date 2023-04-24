@@ -21,8 +21,6 @@ public static class ApplicationServiceExtensions
                 });
     public static void AddAplicacionServices(this IServiceCollection services)
     {
-        //services.AddScoped<IPasswordHasher<Usuario>, PasswordHasher<Usuario>>();
-        //services.AddScoped<IUserService, UserService>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
     }
 

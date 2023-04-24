@@ -8,7 +8,7 @@ public class Product : BaseEntity
     public string Description { get; set; } 
     public int Amount { get; set; }
     public decimal Temperature { get; set; }
-    [JsonIgnore]
-    public ICollection<Store>? Stores { get; set; }
-    
+    public ICollection<Store> Stores { get; set; } = new HashSet<Store>();
+    public ICollection<StoreProducts> StoreProducts { get; set; }
+
 }
