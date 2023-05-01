@@ -22,6 +22,20 @@ builder.Services.AddControllers();
 //Manejo de errores del model state(Anotaciones como Required, Email, etc)
 builder.Services.AddValidationErrors();
 
+// Configuración de User Secrets
+var configuration = new ConfigurationBuilder()
+    .AddUserSecrets<Program>()
+    .Build();
+
+// Agregar los valores del archivo secrets.json a las variables de entorno
+foreach (var item in configuration.AsEnumerable())
+{
+    if (!string.IsNullOrEmpty(item.Value))
+    {
+        Environment.SetEnvironmentVariable(item.Key, item.Value);
+    }
+}
+
 builder.Services.AddDbContext<BusinessContext>(options =>
 {
     var connectionString = Environment.GetEnvironmentVariable("TEMPALERT_BUSINESS_DATABASE_CONNECTION");
