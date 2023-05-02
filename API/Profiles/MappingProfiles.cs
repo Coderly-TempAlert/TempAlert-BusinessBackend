@@ -11,7 +11,10 @@ public class MappingProfiles : Profile
         CreateMap<Product, AddUpdateProductDto>()
             .ReverseMap();
 
-        CreateMap<Store, AddUpdateStoreDto>()
+        CreateMap<Store, AddStoreDto>()
+            .ReverseMap();
+
+        CreateMap<Store, UpdateStoreDto>()
             .ReverseMap();
 
         CreateMap<StoreProducts, StoreProducts>()

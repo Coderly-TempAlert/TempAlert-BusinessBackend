@@ -1,8 +1,6 @@
-﻿using Core.Entities;
+﻿namespace API.Dtos;
 
-namespace API.Dtos;
-
-public class AddUpdateStoreDto
+public class AddStoreDto
 {
     public string Name { get; set; }
     public string Description { get; set; }

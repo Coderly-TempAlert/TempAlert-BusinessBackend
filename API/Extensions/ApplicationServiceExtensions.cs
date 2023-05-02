@@ -42,7 +42,7 @@ public static class ApplicationServiceExtensions
                     {
                         Endpoint ="*",
                         Period = "10s",
-                        Limit = 2    
+                        Limit = 20 
                     }
                 };
         });

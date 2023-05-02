@@ -51,7 +51,7 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Store>> Post(AddUpdateStoreDto storeDto)
+        public async Task<ActionResult<Store>> Post(AddStoreDto storeDto)
         {
             var storeExistWithName = _unitOfWork.Stores.Find(u => u.Name.ToLower() == storeDto.Name.ToLower()).FirstOrDefault();
 
@@ -72,7 +72,7 @@ namespace API.Controllers
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<Store>> Put(Guid id, [FromBody] AddUpdateStoreDto storeDto)
+        public async Task<ActionResult<Store>> Put(Guid id, [FromBody] UpdateStoreDto storeDto)
         {
             var store = await _unitOfWork.Stores.GetByIdAsync(id);
 
