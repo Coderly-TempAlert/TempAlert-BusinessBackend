@@ -25,6 +25,7 @@ public class StoreProductRepository : GenericRepository<StoreProducts>, IStorePr
                                 .Include(u => u.Product)
                                 .Skip((pageIndex - 1) * pageSize)
                                 .Take(pageSize)
+                                .Include(u => u.Store)
                                 .ToListAsync();
 
         return (totallyRegister, register);
