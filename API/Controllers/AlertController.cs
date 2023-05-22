@@ -51,6 +51,7 @@ public class AlertController : BaseApiController
 
         var alert = _mapper.Map<Alert>(alertDto);
 
+        alert.CreatedDate = DateTime.Now;
 
         _unitOfWork.Alert.Add(alert);
         await _unitOfWork.SaveAsync();

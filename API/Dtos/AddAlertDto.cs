@@ -9,6 +9,5 @@ public class AddAlertDto
 
     [Required]
     public Guid ProductId { get; set; }
-    [Required]
-    public DateTime CreatedDate { get; set; }
+
 }
