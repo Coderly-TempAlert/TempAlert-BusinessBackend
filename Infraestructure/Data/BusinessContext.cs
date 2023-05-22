@@ -13,6 +13,7 @@ public class BusinessContext : DbContext
     public DbSet<Store> Stores { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<StoreProducts> StoreProducts { get; set; }
+    public DbSet<Alert> Alerts { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

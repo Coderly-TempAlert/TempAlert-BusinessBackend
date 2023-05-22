@@ -11,6 +11,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     private IProductRepository _products;
     private IStoreRepository _stores;
     private IStoreProductRepository _storeproduct;
+    private IAlertRepository _alert;
 
     public UnitOfWork(BusinessContext context)
     {
@@ -50,6 +51,18 @@ public class UnitOfWork : IUnitOfWork, IDisposable
                 _storeproduct = new StoreProductRepository(_context);
             }
             return _storeproduct;
+        }
+    }
+
+    public IAlertRepository Alert
+    {
+        get
+        {
+            if (_alert == null)
+            {
+                _alert = new AlertRepository(_context);
+            }
+            return _alert;
         }
     }
 

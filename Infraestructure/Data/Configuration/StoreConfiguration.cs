@@ -25,19 +25,34 @@ public class StoreConfiguration : IEntityTypeConfiguration<Store>
         builder.HasMany(p => p.Products)
             .WithMany(p => p.Stores)
             .UsingEntity<StoreProducts>(
-
-                j => j.HasOne(pt => pt.Product)
-                .WithMany(t => t.StoreProducts)
-                .HasForeignKey(pt => pt.ProductId),
-
-                j => j.HasOne(pt => pt.Store)
-                .WithMany(t => t.StoreProducts)
-                .HasForeignKey(pt => pt.StoreId),
-
-                j =>
-                {
-                    j.HasKey(t => new { t.ProductId, t.StoreId });
-                }
+            j => j.HasOne(pt => pt.Product)
+            .WithMany(t => t.StoreProducts)
+            .HasForeignKey(pt => pt.ProductId),
+            j => j.HasOne(pt => pt.Store)
+            .WithMany(t => t.StoreProducts)
+            .HasForeignKey(pt => pt.StoreId),
+            j =>
+            {
+               
+                j.HasKey(t => new { t.ProductId, t.StoreId });
+            }
             );
+
+
+        builder.HasMany(p => p.Products)
+            .WithMany(p => p.Stores)
+            .UsingEntity<Alert>(
+            j => j.HasOne(pt => pt.Product)
+            .WithMany(t => t.Alerts)
+            .HasForeignKey(pt => pt.ProductId),
+            j => j.HasOne(pt => pt.Store)
+            .WithMany(t => t.Alerts)
+            .HasForeignKey(pt => pt.StoreId),
+            j =>
+            {
+                j.HasKey(t => new { t.ProductId, t.StoreId });
+            }
+            );
+
     }
 }

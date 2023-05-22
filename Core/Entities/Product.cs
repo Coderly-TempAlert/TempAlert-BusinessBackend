@@ -12,5 +12,7 @@ public class Product : BaseEntity
     public ICollection<Store> Stores { get; set; } = new HashSet<Store>();
     [JsonIgnore]
     public ICollection<StoreProducts> StoreProducts { get; set; }
+    [JsonIgnore]
+    public ICollection<Alert> Alerts { get; set; }
 
 }
