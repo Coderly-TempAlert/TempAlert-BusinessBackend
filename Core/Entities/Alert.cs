@@ -6,5 +6,6 @@ public class Alert : BaseEntity
     public Store Store { get; set; }
     public Guid ProductId { get; set; }
     public Product Product { get; set; }
+    public DateTime CreatedDate { get; set; }
 }
 
