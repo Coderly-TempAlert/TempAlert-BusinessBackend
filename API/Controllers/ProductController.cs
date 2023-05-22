@@ -73,16 +73,26 @@ namespace API.Controllers
                 return BadRequest(new ApiResponse(400, $"Product with name {productoDto.Name} already exists"));
 
 
-            var product = _mapper.Map<Product>(productoDto);
-
             var store = await _unitOfWork.Stores.GetByIdAsync(productoDto.StoreId);
 
-            if(store == null)
+            if (store == null)
                 return NotFound(new ApiResponse(404, $"Not found store with id {productoDto.StoreId}"));
+
+            var product = _mapper.Map<Product>(productoDto);
 
             product.Stores.Add(store);
 
             _unitOfWork.Products.Add(product);
+
+
+            var productStore = new StoreProducts
+            {
+                ProductId = product.Id,
+                StoreId = productoDto.StoreId,
+            };
+
+            _unitOfWork.StoreProducts.Add(productStore);
+
             await _unitOfWork.SaveAsync();
 
             return CreatedAtAction(nameof(Post), product);
