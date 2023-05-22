@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infraestructure.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateDataBase : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -52,6 +52,32 @@ namespace Infraestructure.Data.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Alerts",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    StoreId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    ProductId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Alerts", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Alerts_products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Alerts_stores_StoreId",
+                        column: x => x.StoreId,
+                        principalTable: "stores",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "StoreProducts",
                 columns: table => new
                 {
@@ -77,6 +103,16 @@ namespace Infraestructure.Data.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Alerts_ProductId",
+                table: "Alerts",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Alerts_StoreId",
+                table: "Alerts",
+                column: "StoreId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_StoreProducts_StoreId",
                 table: "StoreProducts",
                 column: "StoreId");
@@ -85,6 +121,9 @@ namespace Infraestructure.Data.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Alerts");
+
             migrationBuilder.DropTable(
                 name: "StoreProducts");
 

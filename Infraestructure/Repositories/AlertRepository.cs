@@ -21,6 +21,8 @@ public class AlertRepository : GenericRepository<Alert>, IAlertRepository
         var register = await consultation
                                 .Skip((pageIndex - 1) * pageSize)
                                 .Take(pageSize)
+                                .Include(a => a.Store)
+                                .Include(a => a.Product)
                                 .ToListAsync();
 
         return (totallyRegister, register);

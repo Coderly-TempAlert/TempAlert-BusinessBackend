@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructure.Data.Migrations
 {
     [DbContext(typeof(BusinessContext))]
-    [Migration("20230424054440_AddStoreProductTable")]
-    partial class AddStoreProductTable
+    [Migration("20230522181725_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,6 +21,27 @@ namespace Infraestructure.Data.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("Core.Entities.Alert", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("StoreId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("StoreId");
+
+                    b.ToTable("Alerts");
+                });
 
             modelBuilder.Entity("Core.Entities.Product", b =>
                 {
@@ -88,6 +109,25 @@ namespace Infraestructure.Data.Migrations
                     b.ToTable("StoreProducts");
                 });
 
+            modelBuilder.Entity("Core.Entities.Alert", b =>
+                {
+                    b.HasOne("Core.Entities.Product", "Product")
+                        .WithMany("Alerts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Core.Entities.Store", "Store")
+                        .WithMany("Alerts")
+                        .HasForeignKey("StoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Store");
+                });
+
             modelBuilder.Entity("Core.Entities.StoreProducts", b =>
                 {
                     b.HasOne("Core.Entities.Product", "Product")
@@ -109,11 +149,15 @@ namespace Infraestructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.Product", b =>
                 {
+                    b.Navigation("Alerts");
+
                     b.Navigation("StoreProducts");
                 });
 
             modelBuilder.Entity("Core.Entities.Store", b =>
                 {
+                    b.Navigation("Alerts");
+
                     b.Navigation("StoreProducts");
                 });
 #pragma warning restore 612, 618

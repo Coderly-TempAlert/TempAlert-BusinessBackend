@@ -21,13 +21,19 @@ namespace Infraestructure.Data.Migrations
 
             modelBuilder.Entity("Core.Entities.Alert", b =>
                 {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
                     b.Property<Guid>("ProductId")
                         .HasColumnType("char(36)");
 
                     b.Property<Guid>("StoreId")
                         .HasColumnType("char(36)");
 
-                    b.HasKey("ProductId", "StoreId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
 
                     b.HasIndex("StoreId");
 

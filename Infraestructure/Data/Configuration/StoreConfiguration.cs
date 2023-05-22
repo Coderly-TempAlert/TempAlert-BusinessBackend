@@ -33,7 +33,7 @@ public class StoreConfiguration : IEntityTypeConfiguration<Store>
             .HasForeignKey(pt => pt.StoreId),
             j =>
             {
-               
+
                 j.HasKey(t => new { t.ProductId, t.StoreId });
             }
             );
@@ -50,7 +50,7 @@ public class StoreConfiguration : IEntityTypeConfiguration<Store>
             .HasForeignKey(pt => pt.StoreId),
             j =>
             {
-                j.HasKey(t => new { t.ProductId, t.StoreId });
+                j.HasKey(t => new { t.Id });
             }
             );
 
