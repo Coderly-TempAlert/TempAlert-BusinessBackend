@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Windows\\.nuget\\packages\\": {}
+    "C:\\Users\\mathy\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Windows\\Desktop\\UPC\\Desarrollo de Soluciones IoT\\TempAlert-Business\\Core\\Core.csproj",
+      "projectUniqueName": "D:\\Git Repositories\\TempAlert-BusinessBackend\\Core\\Core.csproj",
       "projectName": "Core",
-      "projectPath": "C:\\Users\\Windows\\Desktop\\UPC\\Desarrollo de Soluciones IoT\\TempAlert-Business\\Core\\Core.csproj",
-      "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Windows\\Desktop\\UPC\\Desarrollo de Soluciones IoT\\TempAlert-Business\\Core\\obj\\",
+      "projectPath": "D:\\Git Repositories\\TempAlert-BusinessBackend\\Core\\Core.csproj",
+      "packagesPath": "C:\\Users\\mathy\\.nuget\\packages\\",
+      "outputPath": "D:\\Git Repositories\\TempAlert-BusinessBackend\\Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Windows\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mathy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -61,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
