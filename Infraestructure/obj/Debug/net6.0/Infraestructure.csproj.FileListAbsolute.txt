@@ -15,3 +15,20 @@ C:\Users\Windows\Desktop\UPC\Desarrollo de Soluciones IoT\TempAlert-Business\Inf
 C:\Users\Windows\Desktop\UPC\Desarrollo de Soluciones IoT\TempAlert-Business\Infraestructure\obj\Debug\net6.0\ref\Infraestructure.dll
 C:\Users\Windows\Desktop\UPC\Desarrollo de Soluciones IoT\TempAlert-Business\Infraestructure\bin\Debug\net6.0\Infraestructure.runtimeconfig.json
 C:\Users\Windows\Desktop\UPC\Desarrollo de Soluciones IoT\TempAlert-Business\Infraestructure\obj\Debug\net6.0\Infraestructure.genruntimeconfig.cache
+D:\Git Repositories\TempAlert-BusinessBackend\Infraestructure\bin\Debug\net6.0\Infraestructure.deps.json
+D:\Git Repositories\TempAlert-BusinessBackend\Infraestructure\bin\Debug\net6.0\Infraestructure.runtimeconfig.json
+D:\Git Repositories\TempAlert-BusinessBackend\Infraestructure\bin\Debug\net6.0\Infraestructure.dll
+D:\Git Repositories\TempAlert-BusinessBackend\Infraestructure\bin\Debug\net6.0\Infraestructure.pdb
+D:\Git Repositories\TempAlert-BusinessBackend\Infraestructure\bin\Debug\net6.0\Core.dll
+D:\Git Repositories\TempAlert-BusinessBackend\Infraestructure\bin\Debug\net6.0\Core.pdb
+D:\Git Repositories\TempAlert-BusinessBackend\Infraestructure\obj\Debug\net6.0\Infraestructure.csproj.AssemblyReference.cache
+D:\Git Repositories\TempAlert-BusinessBackend\Infraestructure\obj\Debug\net6.0\Infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Git Repositories\TempAlert-BusinessBackend\Infraestructure\obj\Debug\net6.0\Infraestructure.AssemblyInfoInputs.cache
+D:\Git Repositories\TempAlert-BusinessBackend\Infraestructure\obj\Debug\net6.0\Infraestructure.AssemblyInfo.cs
+D:\Git Repositories\TempAlert-BusinessBackend\Infraestructure\obj\Debug\net6.0\Infraestructure.csproj.CoreCompileInputs.cache
+D:\Git Repositories\TempAlert-BusinessBackend\Infraestructure\obj\Debug\net6.0\Infraestructure.csproj.CopyComplete
+D:\Git Repositories\TempAlert-BusinessBackend\Infraestructure\obj\Debug\net6.0\Infraestructure.dll
+D:\Git Repositories\TempAlert-BusinessBackend\Infraestructure\obj\Debug\net6.0\refint\Infraestructure.dll
+D:\Git Repositories\TempAlert-BusinessBackend\Infraestructure\obj\Debug\net6.0\Infraestructure.pdb
+D:\Git Repositories\TempAlert-BusinessBackend\Infraestructure\obj\Debug\net6.0\Infraestructure.genruntimeconfig.cache
+D:\Git Repositories\TempAlert-BusinessBackend\Infraestructure\obj\Debug\net6.0\ref\Infraestructure.dll

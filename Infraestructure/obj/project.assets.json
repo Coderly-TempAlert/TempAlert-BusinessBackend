@@ -1088,19 +1088,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Windows\\.nuget\\packages\\": {}
+    "C:\\Users\\mathy\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Windows\\Desktop\\UPC\\Desarrollo de Soluciones IoT\\TempAlert-Business\\Infraestructure\\Infraestructure.csproj",
+      "projectUniqueName": "D:\\Git Repositories\\TempAlert-BusinessBackend\\Infraestructure\\Infraestructure.csproj",
       "projectName": "Infraestructure",
-      "projectPath": "C:\\Users\\Windows\\Desktop\\UPC\\Desarrollo de Soluciones IoT\\TempAlert-Business\\Infraestructure\\Infraestructure.csproj",
-      "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Windows\\Desktop\\UPC\\Desarrollo de Soluciones IoT\\TempAlert-Business\\Infraestructure\\obj\\",
+      "projectPath": "D:\\Git Repositories\\TempAlert-BusinessBackend\\Infraestructure\\Infraestructure.csproj",
+      "packagesPath": "C:\\Users\\mathy\\.nuget\\packages\\",
+      "outputPath": "D:\\Git Repositories\\TempAlert-BusinessBackend\\Infraestructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Windows\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mathy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1114,8 +1114,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Windows\\Desktop\\UPC\\Desarrollo de Soluciones IoT\\TempAlert-Business\\Core\\Core.csproj": {
-              "projectPath": "C:\\Users\\Windows\\Desktop\\UPC\\Desarrollo de Soluciones IoT\\TempAlert-Business\\Core\\Core.csproj"
+            "D:\\Git Repositories\\TempAlert-BusinessBackend\\Core\\Core.csproj": {
+              "projectPath": "D:\\Git Repositories\\TempAlert-BusinessBackend\\Core\\Core.csproj"
             }
           }
         }
@@ -1161,7 +1161,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
